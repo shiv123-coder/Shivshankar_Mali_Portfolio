@@ -73,15 +73,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
-            <button 
-              className="flex items-center gap-2 text-sm text-muted-foreground px-3 py-1.5 rounded-full bg-secondary/30 border border-border hover:bg-secondary/80 transition-colors group"
-              onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
-            >
-              <Search className="w-4 h-4 group-hover:text-foreground transition-colors" />
-              <span className="group-hover:text-foreground transition-colors">Search...</span>
-              <kbd className="ml-2 px-1.5 py-0.5 rounded-md bg-background border border-border text-[10px] font-mono text-foreground font-medium">⌘K</kbd>
-            </button>
+
             <ThemeToggle />
           </nav>
 
