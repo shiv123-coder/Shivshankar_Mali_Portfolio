@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, Command } from "lucide-react";
+import { Menu, X, Command, Search, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -55,12 +55,10 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary text-primary-foreground font-bold text-lg transition-transform group-hover:rotate-12 shadow-lg shadow-primary/20">
-              S
-            </div>
-            <span className="text-xl font-bold tracking-tight text-foreground hidden sm:block">
-              Shivshankar
+          <Link href="/" className="flex items-center gap-2 group">
+            <Code2 className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+            <span className="text-xl font-bold tracking-tighter text-foreground hidden sm:block">
+              Shivshankar<span className="text-primary">.dev</span>
             </span>
           </Link>
 
@@ -77,11 +75,12 @@ export default function Navbar() {
             ))}
             
             <button 
-              className="flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-md bg-secondary/50 text-secondary-foreground border border-border hover:bg-secondary transition-colors"
+              className="flex items-center gap-2 text-sm text-muted-foreground px-3 py-1.5 rounded-full bg-secondary/30 border border-border hover:bg-secondary/80 transition-colors group"
               onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
             >
-              <span>Menu</span>
-              <kbd className="px-1.5 py-0.5 rounded bg-background border border-border text-[10px]">⌘K</kbd>
+              <Search className="w-4 h-4 group-hover:text-foreground transition-colors" />
+              <span className="group-hover:text-foreground transition-colors">Search...</span>
+              <kbd className="ml-2 px-1.5 py-0.5 rounded-md bg-background border border-border text-[10px] font-mono text-foreground font-medium">⌘K</kbd>
             </button>
             <ThemeToggle />
           </nav>
