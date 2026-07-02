@@ -6,8 +6,6 @@ import { Mail, MapPin, Send, CheckCircle2, FileText } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,44 +21,51 @@ export default function Contact() {
       const email = formData.get("email") as string;
       const message = formData.get("message") as string;
 
-      // Check if env vars are loaded
-      if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
+      // Check if Web3Forms key is loaded
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+      if (!accessKey) {
         toast.error("Configuration Error", {
-          description: "Firebase API key is missing. If you just added it to .env.local, please restart your development server.",
+          description: "Web3Forms Access Key is missing. Please add it to your .env.local file and restart the server.",
         });
         setIsSubmitting(false);
         return;
       }
 
-      // Push to Firestore
-      await addDoc(collection(db, "messages"), {
-        name,
-        email,
-        message,
-        createdAt: serverTimestamp(),
-        read: false,
+      // Submit to Web3Forms
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name,
+          email,
+          message,
+        }),
       });
 
-      setIsSuccess(true);
-      toast.success("Message sent successfully!", {
-        description: "Thanks for reaching out. I'll get back to you soon.",
-      });
-      
-      // Reset form
-      e.currentTarget.reset();
+      const result = await res.json();
 
-      // Reset success state after a few seconds
-      setTimeout(() => setIsSuccess(false), 5000);
-    } catch (error: any) {
-      console.error("Error adding document: ", error);
-      
-      let errorMsg = "Please try reaching out via email directly.";
-      if (error?.code === 'permission-denied') {
-        errorMsg = "Your Firestore database rules are blocking this request. Please update them to allow writes.";
+      if (result.success) {
+        setIsSuccess(true);
+        toast.success("Message sent successfully!", {
+          description: "Thanks for reaching out. I'll get back to you soon.",
+        });
+        
+        // Reset form on success
+        e.currentTarget.reset();
+
+        // Reset success state after a few seconds
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        throw new Error(result.message || "Failed to send message");
       }
-      
+    } catch (error: any) {
+      console.error("Error sending message: ", error);
       toast.error("Failed to send message", {
-        description: errorMsg,
+        description: "Something went wrong. Please try reaching out via email directly.",
       });
     } finally {
       setIsSubmitting(false);
