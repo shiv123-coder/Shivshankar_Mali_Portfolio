@@ -57,7 +57,7 @@ export default function Hero() {
             variants={FADE_UP_ANIMATION_VARIANTS}
             className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
           >
-            I'm <strong className="text-foreground font-semibold">Shivshankar Mali</strong>, a Software Engineer specializing in enterprise architecture, high-performance APIs, and AI integrations.
+            I'm <strong className="text-foreground font-semibold">Shivshankar D. Mali</strong>, a Software Engineer specializing in enterprise architecture, high-performance APIs, and AI integrations.
           </motion.p>
 
           {/* CTAs */}

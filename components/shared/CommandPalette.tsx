@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
-import { Search, User, Briefcase, Code, Terminal, FileText, Mail } from "lucide-react";
+import { Search, User, Briefcase, Code, Terminal, FileText, Mail, Trophy, Award, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function CommandPalette() {
@@ -78,7 +78,28 @@ export default function CommandPalette() {
               className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
             >
               <Briefcase className="mr-2 h-4 w-4" />
-              <span>Experience & Achievements</span>
+              <span>Experience</span>
+            </Command.Item>
+            <Command.Item 
+              onSelect={() => runCommand(() => router.push("#achievements"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <Trophy className="mr-2 h-4 w-4" />
+              <span>Achievements</span>
+            </Command.Item>
+            <Command.Item 
+              onSelect={() => runCommand(() => router.push("#certifications"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <Award className="mr-2 h-4 w-4" />
+              <span>Certifications</span>
+            </Command.Item>
+            <Command.Item 
+              onSelect={() => runCommand(() => router.push("#contact"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <MessageSquare className="mr-2 h-4 w-4" />
+              <span>Contact</span>
             </Command.Item>
             <Command.Item 
               onSelect={() => runCommand(() => router.push("/blog"))}

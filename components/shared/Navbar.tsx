@@ -5,12 +5,16 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import { Menu, X, Command } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
+  { name: "Achievements", href: "#achievements" },
+  { name: "Certifications", href: "#certifications" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -51,8 +55,8 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
-            S<span className="text-primary">M</span>.
+          <Link href="/" className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary bg-primary/10 text-lg font-bold tracking-tight text-primary transition-transform hover:scale-105 hover:bg-primary/20">
+            SM
           </Link>
 
           {/* Desktop Nav */}
@@ -74,15 +78,19 @@ export default function Navbar() {
               <span>Menu</span>
               <kbd className="px-1.5 py-0.5 rounded bg-background border border-border text-[10px]">⌘K</kbd>
             </button>
+            <ThemeToggle />
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2 -mr-2 text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button
+              className="p-2 -mr-2 text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Nav Overlay */}
