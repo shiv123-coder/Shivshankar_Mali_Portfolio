@@ -95,10 +95,19 @@ export default function Hero() {
             {/* Dynamic Typing Text */}
             <motion.div 
               variants={FADE_UP_ANIMATION_VARIANTS}
-              className="h-10 mb-10 text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground tracking-tight"
+              className="h-10 mb-4 text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground tracking-tight"
             >
               {currentText}<span className="animate-pulse text-primary font-light">|</span>
             </motion.div>
+
+            {/* Bio Paragraph */}
+            <motion.p 
+              variants={FADE_UP_ANIMATION_VARIANTS}
+              className="text-muted-foreground max-w-lg mb-10 text-base md:text-lg leading-relaxed text-center lg:text-left"
+            >
+              I build scalable enterprise software and dynamic web applications. 
+              Passionate about clean architecture, solving complex problems, and creating seamless user experiences.
+            </motion.p>
 
             {/* CTAs */}
             <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center lg:justify-start mt-2">
