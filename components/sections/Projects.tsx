@@ -119,15 +119,15 @@ export default function Projects() {
                   </span>
                   <div className="flex gap-2">
                     {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 bg-secondary rounded-full hover:bg-secondary/80">
-                        <span className="sr-only">GitHub</span>
+                      <a href={project.repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors px-3 py-1.5 bg-secondary rounded-full hover:bg-secondary/80 text-xs font-medium">
                         <FaGithub className="w-4 h-4" />
+                        <span>Source</span>
                       </a>
                     )}
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-secondary rounded-full hover:bg-secondary/80">
-                        <span className="sr-only">Demo</span>
+                      <a href={project.demo} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors px-3 py-1.5 bg-secondary rounded-full hover:bg-secondary/80 text-xs font-medium">
                         <ExternalLink className="w-4 h-4" />
+                        <span>Demo</span>
                       </a>
                     )}
                   </div>
