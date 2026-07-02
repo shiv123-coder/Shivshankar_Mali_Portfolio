@@ -55,10 +55,12 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <Code2 className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
-            <span className="text-xl font-bold tracking-tighter text-foreground hidden sm:block">
-              Shivshankar<span className="text-primary">.dev</span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-bold text-lg transition-transform group-hover:scale-110 shadow-lg shadow-primary/20">
+              S
+            </div>
+            <span className="text-xl font-bold tracking-tight text-foreground hidden sm:block">
+              Shivshankar
             </span>
           </Link>
 
