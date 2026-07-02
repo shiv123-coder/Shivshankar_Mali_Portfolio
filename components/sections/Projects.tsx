@@ -91,8 +91,8 @@ export default function Projects() {
           </Link>
         </motion.div>
 
-        {/* Clean uniform 3-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Clean uniform 2-column grid for larger cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -100,19 +100,19 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
             >
               {/* Project Image Header */}
-              <div className="relative h-48 w-full overflow-hidden border-b border-border bg-secondary">
+              <div className="relative h-[280px] w-full overflow-hidden border-b border-border bg-secondary">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               
-              <div className="flex flex-col flex-grow p-6">
+              <div className="flex flex-col flex-grow p-8">
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-xs font-mono font-bold text-primary px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20">
                     {project.category}
@@ -133,9 +133,9 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="mb-6 flex-grow">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">
+                <div className="mb-8 flex-grow">
+                  <h3 className="text-3xl font-bold mb-4 group-hover:text-primary transition-colors tracking-tight">{project.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
                     {project.description}
                   </p>
                 </div>
@@ -144,7 +144,7 @@ export default function Projects() {
                   {project.tech.map((tech) => (
                     <span 
                       key={tech} 
-                      className="px-2 py-1 text-[11px] font-mono font-medium rounded-md bg-secondary text-secondary-foreground border border-border/50"
+                      className="px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-secondary text-secondary-foreground border border-border/50"
                     >
                       {tech}
                     </span>
