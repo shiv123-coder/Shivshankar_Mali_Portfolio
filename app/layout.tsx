@@ -5,7 +5,6 @@ import SmoothScroll from "@/components/shared/SmoothScroll";
 import Navbar from "@/components/shared/Navbar";
 import CommandPalette from "@/components/shared/CommandPalette";
 import Footer from "@/components/shared/Footer";
-import CustomCursor from "@/components/shared/CustomCursor";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 
 import { Toaster } from "sonner";
@@ -44,7 +43,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CustomCursor />
           <Toaster position="bottom-right" theme="dark" toastOptions={{ style: { background: '#18181b', border: '1px solid rgba(255,255,255,0.1)', color: '#fafafa' } }} />
           <SmoothScroll>
             <Navbar />
