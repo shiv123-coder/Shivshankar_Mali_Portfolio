@@ -55,8 +55,13 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary bg-primary/10 text-lg font-bold tracking-tight text-primary transition-transform hover:scale-105 hover:bg-primary/20">
-            SM
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary text-primary-foreground font-bold text-lg transition-transform group-hover:rotate-12 shadow-lg shadow-primary/20">
+              S
+            </div>
+            <span className="text-xl font-bold tracking-tight text-foreground hidden sm:block">
+              Shivshankar
+            </span>
           </Link>
 
           {/* Desktop Nav */}

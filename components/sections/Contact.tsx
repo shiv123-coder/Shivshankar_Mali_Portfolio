@@ -23,6 +23,15 @@ export default function Contact() {
       const email = formData.get("email") as string;
       const message = formData.get("message") as string;
 
+      // Check if env vars are loaded
+      if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
+        toast.error("Configuration Error", {
+          description: "Firebase API key is missing. If you just added it to .env.local, please restart your development server.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       // Push to Firestore
       await addDoc(collection(db, "messages"), {
         name,
@@ -42,10 +51,16 @@ export default function Contact() {
 
       // Reset success state after a few seconds
       setTimeout(() => setIsSuccess(false), 5000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error adding document: ", error);
+      
+      let errorMsg = "Please try reaching out via email directly.";
+      if (error?.code === 'permission-denied') {
+        errorMsg = "Your Firestore database rules are blocking this request. Please update them to allow writes.";
+      }
+      
       toast.error("Failed to send message", {
-        description: "Please try reaching out via email directly.",
+        description: errorMsg,
       });
     } finally {
       setIsSubmitting(false);
