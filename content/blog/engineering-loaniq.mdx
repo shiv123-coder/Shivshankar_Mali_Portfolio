@@ -1,0 +1,57 @@
+---
+title: "Engineering LoanIQ: Automating Enterprise Lending with AI"
+date: "2026-06-15"
+description: "A deep dive into how I architected an enterprise Loan Origination System using React, Node.js, OCR, and NLP to automate the underwriting process."
+tags: ["AI", "React", "Node.js", "Enterprise Architecture"]
+---
+
+## The Core Problem
+
+Enterprise lending is notoriously slow. Underwriters spend countless hours manually extracting data from KYC documents, pay stubs, and tax returns. This manual bottleneck limits scalability and introduces human error. 
+
+To solve this, I engineered **LoanIQ**—an AI-powered Loan Origination System (LOS) that completely automates the document extraction and risk assessment pipeline.
+
+## System Architecture
+
+The architecture had to handle highly sensitive financial data while executing intensive machine learning tasks in real-time.
+
+```javascript
+// Example Node.js Controller for Biometric Validation Pipeline
+export const validateDocuments = async (req, res) => {
+  try {
+    const { documentImage, selfieImage } = req.body;
+    
+    // 1. Run OCR Extraction
+    const extractedData = await ocrService.extract(documentImage);
+    
+    // 2. Run NLP Risk Analysis on extracted text
+    const riskScore = await nlpService.analyzeRisk(extractedData.financials);
+    
+    // 3. Biometric Verification
+    const isMatch = await visionService.verifyIdentity(documentImage, selfieImage);
+    
+    return res.status(200).json({
+      approved: isMatch && riskScore > 750,
+      confidence: riskScore,
+      extractedData
+    });
+  } catch (error) {
+    return res.status(500).json({ error: "Validation Pipeline Failed" });
+  }
+}
+```
+
+### 1. The Frontend (React 19)
+The client interface was built using React 19 to leverage concurrent rendering. The dashboard provides real-time WebSockets feedback to loan officers as documents are processed in the background.
+
+### 2. The AI Pipeline (OCR + NLP)
+When a user uploads a document, it hits a secure Node.js microservice. 
+- **Computer Vision (OpenCV):** Detects document boundaries and corrects skew.
+- **OCR:** Extracts structured JSON data from unstructured images.
+- **NLP:** Analyzes banking statements to detect spending anomalies or hidden liabilities.
+
+## The Results
+
+By implementing this pipeline, LoanIQ reduced manual underwriting time by **85%**, allowing loan officers to focus purely on edge cases and relationship management rather than data entry.
+
+*Building scalable AI isn't just about the model—it's about how elegantly you integrate it into the business workflow.*
