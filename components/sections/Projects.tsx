@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const projects = [
   {
     title: "Mukti Portal",
-    description: "Digital trust ecosystem generating trust signals from verified work history for informal workers (VYOMA 2026).",
+    description: "A digital trust ecosystem designed to empower informal sector workers. It generates verifiable trust signals based on authentic work histories and peer validations, helping unbanked individuals build a reliable professional identity to access financial services (developed for VYOMA 2026).",
     category: "Full-Stack",
     tech: ["React", "Firebase", "Node.js", "Python"],
     demo: "https://mukti-portal.vercel.app/",
@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: "LoanIQ",
-    description: "Enterprise AI-Powered Loan Origination System with automated underwriting workflows and biometric validation.",
+    description: "An enterprise-grade, AI-powered Loan Origination System that automates the underwriting process. It leverages OCR for instant document data extraction, NLP for intelligent risk analysis, and biometric validation to provide secure, frictionless loan approvals at scale.",
     category: "AI & Full-Stack",
     tech: ["React", "Node.js", "Firebase", "OCR", "NLP"],
     demo: "https://loan-iq-ai.vercel.app",
@@ -27,7 +27,7 @@ const projects = [
   },
   {
     title: "VisionKirana",
-    description: "AI-Powered Micro-Lending Intelligence platform dynamically assessing unbanked store loan eligibility via computer vision.",
+    description: "A micro-lending intelligence platform built to assess the creditworthiness of unbanked local stores. By utilizing computer vision to analyze store inventory and foot traffic in real-time, it dynamically generates risk profiles and loan eligibility metrics without requiring traditional financial histories.",
     category: "AI & Full-Stack",
     tech: ["React 19", "FastAPI", "PostgreSQL", "OpenCV"],
     demo: "https://vision-kirana.vercel.app/",
@@ -36,7 +36,7 @@ const projects = [
   },
   {
     title: "SkyBanking",
-    description: "Secure enterprise banking application featuring peer-to-peer transfers, OTP verification, and ACID transactions.",
+    description: "A comprehensive enterprise banking application engineered for high-security financial operations. It features robust peer-to-peer money transfers, multi-factor OTP authentication, and strict ACID-compliant database transactions to ensure absolute data integrity and fraud prevention.",
     category: "Enterprise Java",
     tech: ["Java 21", "PostgreSQL", "Servlets", "Stripe"],
     demo: "https://skybanking.onrender.com",
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     title: "DriveZone",
-    description: "Enterprise car showroom management platform with secure authentication, enquiry handling, and inventory control.",
+    description: "A full-scale enterprise management platform built for car showrooms and dealerships. It streamlines daily operations by providing role-based secure authentication, real-time vehicle inventory tracking, and an automated customer enquiry handling system to boost sales conversions.",
     category: "Enterprise Java",
     tech: ["Java", "JSP", "Servlets", "Tomcat"],
     demo: "https://drivezone-project.onrender.com/",
@@ -54,7 +54,7 @@ const projects = [
   },
   {
     title: "MidwayCafe",
-    description: "Complete restaurant e-commerce system demonstrating Laravel MVC architecture, Blade rendering, and payment workflows.",
+    description: "A robust restaurant e-commerce and order management system. It demonstrates a clean MVC architecture using Laravel and features dynamic server-side Blade rendering, automated cart management, and seamless end-to-end payment workflows for an optimized dining experience.",
     category: "Full-Stack",
     tech: ["PHP", "Laravel", "PostgreSQL"],
     demo: "https://midwaycafe-restaurant-e-commerce-system.onrender.com/",
