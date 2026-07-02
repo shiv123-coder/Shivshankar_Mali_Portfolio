@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Send, CheckCircle2, FileText, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, FileText } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { db } from "@/lib/firebase";
@@ -103,7 +104,7 @@ export default function Contact() {
                     rel="noreferrer"
                     className="p-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-primary hover:text-background transition-all"
                   >
-                    <Linkedin className="w-5 h-5" />
+                    <FaLinkedin className="w-5 h-5" />
                   </a>
                   <a 
                     href="https://github.com/shiv123-coder" 
@@ -111,7 +112,7 @@ export default function Contact() {
                     rel="noreferrer"
                     className="p-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-foreground hover:text-background transition-all"
                   >
-                    <Github className="w-5 h-5" />
+                    <FaGithub className="w-5 h-5" />
                   </a>
                   <a 
                     href="https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf" 

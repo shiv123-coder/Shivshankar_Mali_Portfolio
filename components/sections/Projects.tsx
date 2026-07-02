@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, FolderGit2 } from "lucide-react";
+import { ExternalLink, FolderGit2 } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -114,7 +115,7 @@ export default function Projects() {
                     {project.repo && (
                       <a href={project.repo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 bg-secondary/50 rounded-full hover:bg-secondary">
                         <span className="sr-only">GitHub Repository</span>
-                        <Github className="w-5 h-5" />
+                        <FaGithub className="w-5 h-5" />
                       </a>
                     )}
                     {project.demo && (

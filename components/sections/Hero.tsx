@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, TerminalSquare } from "lucide-react";
+import { ArrowRight, Download, TerminalSquare } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Hero() {
@@ -83,11 +84,11 @@ export default function Hero() {
           <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center gap-6 mt-12 text-muted-foreground">
             <a href="https://github.com/shiv123-coder" target="_blank" className="hover:text-foreground transition-colors p-2 hover:bg-secondary/50 rounded-md">
               <span className="sr-only">GitHub</span>
-              <Github className="w-6 h-6" />
+              <FaGithub className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
             </a>
-            <a href="https://www.linkedin.com/in/shivshankar-mali-b46198314/" target="_blank" className="hover:text-[#0077b5] transition-colors p-2 hover:bg-secondary/50 rounded-md">
+            <a href="https://www.linkedin.com/in/shivshankar-mali-b46198314/" target="_blank" rel="noreferrer" className="p-3 bg-secondary/50 rounded-full hover:bg-secondary transition-colors group">
               <span className="sr-only">LinkedIn</span>
-              <Linkedin className="w-6 h-6" />
+              <FaLinkedin className="w-5 h-5 text-muted-foreground hover:text-[#0077b5] transition-colors" />
             </a>
           </motion.div>
         </motion.div>

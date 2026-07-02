@@ -1,4 +1,5 @@
-import { Github, Star, GitFork, Users, BookOpen } from "lucide-react";
+import { Star, GitFork, Users, BookOpen } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import GithubCalendarClient from "./GithubCalendarClient";
 
 // Fetching with Next.js ISR (Cache revalidates every 1 hour)
@@ -36,7 +37,7 @@ export default async function GithubDashboard() {
         
         <div className="mb-12">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
-            <Github className="w-10 h-10 text-primary" /> GitHub Activity
+            <FaGithub className="w-10 h-10 text-primary" /> GitHub Activity
           </h2>
           <div className="w-20 h-1 bg-primary rounded-full mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl">
