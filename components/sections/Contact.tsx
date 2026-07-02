@@ -97,31 +97,34 @@ export default function Contact() {
 
               <div className="flex flex-col gap-4">
                 <h3 className="text-lg font-semibold text-foreground">Connect Online</h3>
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <a 
                     href="https://www.linkedin.com/in/shivshankar-mali-b46198314/" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="p-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-primary hover:text-background transition-all"
+                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-primary hover:text-background transition-all"
                   >
                     <FaLinkedin className="w-5 h-5" />
+                    <span className="text-sm font-medium">LinkedIn</span>
                   </a>
                   <a 
                     href="https://github.com/shiv123-coder" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="p-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-foreground hover:text-background transition-all"
+                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-foreground hover:text-background transition-all"
                   >
                     <FaGithub className="w-5 h-5" />
+                    <span className="text-sm font-medium">GitHub</span>
                   </a>
                   <a 
                     href="https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="p-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-accent hover:text-background transition-all"
+                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-accent hover:text-background transition-all"
                     title="Download Resume"
                   >
                     <FileText className="w-5 h-5" />
+                    <span className="text-sm font-medium">Resume</span>
                   </a>
                 </div>
               </div>
