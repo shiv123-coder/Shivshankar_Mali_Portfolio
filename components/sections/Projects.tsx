@@ -8,6 +8,15 @@ import { cn } from "@/lib/utils";
 
 const projects = [
   {
+    title: "Mukti Portal",
+    description: "Digital trust ecosystem generating trust signals from verified work history for informal workers (VYOMA 2026).",
+    category: "Full-Stack",
+    tech: ["React", "Firebase", "Node.js", "Python"],
+    demo: "https://mukti-portal.vercel.app/",
+    repo: "https://github.com/shiv123-coder/Mukti-Portal",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop", // Collaboration/Portal
+  },
+  {
     title: "LoanIQ",
     description: "Enterprise AI-Powered Loan Origination System with automated underwriting workflows and biometric validation.",
     category: "AI & Full-Stack",
@@ -42,15 +51,6 @@ const projects = [
     demo: "https://drivezone-project.onrender.com/",
     repo: "https://github.com/shiv123-coder/DriveZone",
     image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop", // Cars/Showroom
-  },
-  {
-    title: "Mukti Portal",
-    description: "Digital trust ecosystem generating trust signals from verified work history for informal workers (VYOMA 2026).",
-    category: "Full-Stack",
-    tech: ["React", "Firebase", "Node.js", "Python"],
-    demo: "https://mukti-portal.vercel.app/",
-    repo: "https://github.com/shiv123-coder/Mukti-Portal",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop", // Collaboration/Portal
   },
   {
     title: "MidwayCafe",
