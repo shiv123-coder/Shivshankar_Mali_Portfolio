@@ -14,7 +14,7 @@ const projects = [
     tech: ["React", "Node.js", "Firebase", "OCR", "NLP"],
     demo: "https://loan-iq-ai.vercel.app",
     repo: "https://github.com/shiv123-coder/LoanIQ-AI",
-    featured: true,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop", // Tech dashboard
   },
   {
     title: "VisionKirana",
@@ -23,16 +23,7 @@ const projects = [
     tech: ["React 19", "FastAPI", "PostgreSQL", "OpenCV"],
     demo: "https://vision-kirana.vercel.app/",
     repo: "https://github.com/shiv123-coder/vision-kirana",
-    featured: true,
-  },
-  {
-    title: "Mukti Portal",
-    description: "Digital trust ecosystem generating trust signals from verified work history for informal workers (VYOMA 2026).",
-    category: "Full-Stack",
-    tech: ["React", "Firebase", "Node.js", "Python Flask"],
-    demo: "https://mukti-portal.vercel.app/",
-    repo: "https://github.com/shiv123-coder/Mukti-Portal",
-    featured: false,
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1000&auto=format&fit=crop", // Code/AI
   },
   {
     title: "SkyBanking",
@@ -41,7 +32,7 @@ const projects = [
     tech: ["Java 21", "PostgreSQL", "Servlets", "Stripe"],
     demo: "https://skybanking.onrender.com",
     repo: "https://github.com/shiv123-coder/skybanking",
-    featured: true,
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop", // Finance/Banking
   },
   {
     title: "DriveZone",
@@ -50,7 +41,16 @@ const projects = [
     tech: ["Java", "JSP", "Servlets", "Tomcat"],
     demo: "https://drivezone-project.onrender.com/",
     repo: "https://github.com/shiv123-coder/DriveZone",
-    featured: false,
+    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop", // Cars/Showroom
+  },
+  {
+    title: "Mukti Portal",
+    description: "Digital trust ecosystem generating trust signals from verified work history for informal workers (VYOMA 2026).",
+    category: "Full-Stack",
+    tech: ["React", "Firebase", "Node.js", "Python"],
+    demo: "https://mukti-portal.vercel.app/",
+    repo: "https://github.com/shiv123-coder/Mukti-Portal",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop", // Collaboration/Portal
   },
   {
     title: "MidwayCafe",
@@ -59,7 +59,7 @@ const projects = [
     tech: ["PHP", "Laravel", "PostgreSQL"],
     demo: "https://midwaycafe-restaurant-e-commerce-system.onrender.com/",
     repo: "https://github.com/shiv123-coder/Restaurant_Ecommerce_System_Laravel",
-    featured: false,
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop", // Cafe/Restaurant
   },
 ];
 
@@ -91,7 +91,8 @@ export default function Projects() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Clean uniform 3-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -99,47 +100,51 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={cn(
-                "group relative flex flex-col justify-between p-6 rounded-2xl border bg-card hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300",
-                project.featured ? "border-border hover:border-primary/50 lg:col-span-2" : "border-border/50 hover:border-border"
-              )}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+              {/* Project Image Header */}
+              <div className="relative h-48 w-full overflow-hidden border-b border-border bg-secondary">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
               
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="p-3 bg-secondary rounded-xl">
-                    <FolderGit2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <div className="flex gap-3">
+              <div className="flex flex-col flex-grow p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-xs font-mono font-bold text-primary px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20">
+                    {project.category}
+                  </span>
+                  <div className="flex gap-2">
                     {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 bg-secondary/50 rounded-full hover:bg-secondary">
-                        <span className="sr-only">GitHub Repository</span>
-                        <FaGithub className="w-5 h-5" />
+                      <a href={project.repo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 bg-secondary rounded-full hover:bg-secondary/80">
+                        <span className="sr-only">GitHub</span>
+                        <FaGithub className="w-4 h-4" />
                       </a>
                     )}
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-secondary/50 rounded-full hover:bg-secondary">
-                        <span className="sr-only">Live Demo</span>
-                        <ExternalLink className="w-5 h-5" />
+                      <a href={project.demo} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-secondary rounded-full hover:bg-secondary/80">
+                        <span className="sr-only">Demo</span>
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <span className="text-xs font-mono font-medium text-primary mb-2 block">{project.category}</span>
+                <div className="mb-6 flex-grow">
                   <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
                   <p className="text-muted-foreground leading-relaxed text-sm">
                     {project.description}
                   </p>
                 </div>
 
-                <div className="mt-auto pt-6 flex flex-wrap gap-2">
+                <div className="mt-auto flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span 
                       key={tech} 
-                      className="px-2.5 py-1 text-xs font-mono font-medium rounded-md bg-secondary/80 text-secondary-foreground border border-border/50"
+                      className="px-2 py-1 text-[11px] font-mono font-medium rounded-md bg-secondary text-secondary-foreground border border-border/50"
                     >
                       {tech}
                     </span>
