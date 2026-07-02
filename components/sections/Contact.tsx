@@ -65,7 +65,7 @@ export default function Contact() {
     } catch (error: any) {
       console.error("Error sending message: ", error);
       toast.error("Failed to send message", {
-        description: "Something went wrong. Please try reaching out via email directly.",
+        description: error.message || "Something went wrong. Please try reaching out via email directly.",
       });
     } finally {
       setIsSubmitting(false);
