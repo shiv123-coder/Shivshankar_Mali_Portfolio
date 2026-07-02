@@ -76,11 +76,11 @@ export default function Hero() {
             >
               <span>Full Stack Developer</span>
               <span className="text-muted-foreground/40 hidden sm:inline">|</span>
-              <span>React</span>
+              <span>Java</span>
               <span className="text-muted-foreground/40 hidden sm:inline">|</span>
-              <span>Firebase</span>
+              <span>Next.js</span>
               <span className="text-muted-foreground/40 hidden sm:inline">|</span>
-              <span>Problem Solver</span>
+              <span>TypeScript</span>
             </motion.div>
 
             {/* Prominent Name */}
