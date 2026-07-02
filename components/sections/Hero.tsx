@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export default function Hero() {
   const FADE_UP_ANIMATION_VARIANTS = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50, damping: 20 } },
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 100, damping: 20 } },
   };
 
   return (
