@@ -9,14 +9,14 @@ const cards = [
     title: "The Mission",
     description: "Bridging the gap between bleeding-edge AI models and robust, scalable backend infrastructure to build the next generation of enterprise software.",
     icon: Target,
-    className: "md:col-span-2 md:row-span-2 bg-gradient-to-br from-card to-primary/5",
+    className: "md:col-span-2 bg-gradient-to-br from-card to-primary/5",
     iconClassName: "text-primary",
   },
   {
     title: "Tech Stack",
     description: "Proficient in Next.js, React, Node.js, Express, MongoDB, PostgreSQL, TailwindCSS, TypeScript, and Java.",
     icon: Code2,
-    className: "md:col-span-1 md:row-span-2",
+    className: "md:col-span-1",
     iconClassName: "text-accent",
   },
   {
@@ -72,7 +72,7 @@ export default function About() {
         </motion.div>
 
         {/* Polished Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
@@ -89,7 +89,7 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-auto">
+                <div className="mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-secondary/80 flex items-center justify-center mb-6 border border-border group-hover:scale-110 transition-transform duration-300">
                     <card.icon className={cn("w-6 h-6", card.iconClassName)} />
                   </div>
