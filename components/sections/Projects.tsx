@@ -7,6 +7,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+// Static imports for automatic blur placeholders
+import muktiImg from "@/public/mukti-portal-preview.png";
+import loaniqImg from "@/public/loaniq-preview.png";
+import visionKiranaImg from "@/public/vision-kirana-preview.png";
+import skybankingImg from "@/public/skybanking-preview.png";
+import drivezoneImg from "@/public/drivezone-preview.png";
+import midwaycafeImg from "@/public/midwaycafe-preview.png";
+
 const projects = [
   {
     title: "Mukti Portal",
@@ -15,7 +23,7 @@ const projects = [
     tech: ["React", "Firebase", "Node.js", "Python"],
     demo: "https://mukti-portal.vercel.app/",
     repo: "https://github.com/shiv123-coder/Mukti-Portal",
-    image: "/mukti-portal-preview.png",
+    image: muktiImg,
   },
   {
     title: "LoanIQ",
@@ -24,7 +32,7 @@ const projects = [
     tech: ["React", "Node.js", "Firebase", "OCR", "NLP"],
     demo: "https://loan-iq-ai.vercel.app",
     repo: "https://github.com/shiv123-coder/LoanIQ-AI",
-    image: "/loaniq-preview.png",
+    image: loaniqImg,
   },
   {
     title: "VisionKirana",
@@ -33,7 +41,7 @@ const projects = [
     tech: ["React 19", "FastAPI", "PostgreSQL", "OpenCV"],
     demo: "https://vision-kirana.vercel.app/",
     repo: "https://github.com/shiv123-coder/vision-kirana",
-    image: "/vision-kirana-preview.png",
+    image: visionKiranaImg,
   },
   {
     title: "SkyBanking",
@@ -42,7 +50,7 @@ const projects = [
     tech: ["Java 21", "PostgreSQL", "Servlets", "Stripe"],
     demo: "https://skybanking.onrender.com",
     repo: "https://github.com/shiv123-coder/skybanking",
-    image: "/skybanking-preview.png",
+    image: skybankingImg,
   },
   {
     title: "DriveZone",
@@ -51,7 +59,7 @@ const projects = [
     tech: ["Java", "JSP", "Servlets", "Tomcat"],
     demo: "https://drivezone-project.onrender.com/",
     repo: "https://github.com/shiv123-coder/DriveZone",
-    image: "/drivezone-preview.png",
+    image: drivezoneImg,
   },
   {
     title: "MidwayCafe",
@@ -60,7 +68,7 @@ const projects = [
     tech: ["PHP", "Laravel", "PostgreSQL"],
     demo: "https://midwaycafe-restaurant-e-commerce-system.onrender.com/",
     repo: "https://github.com/shiv123-coder/Restaurant_Ecommerce_System_Laravel",
-    image: "/midwaycafe-preview.png",
+    image: midwaycafeImg,
   },
 ];
 
@@ -109,6 +117,7 @@ export default function Projects() {
                   src={project.image} 
                   alt={project.title} 
                   fill
+                  placeholder="blur"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
