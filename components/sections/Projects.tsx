@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, FolderGit2 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const projects = [
@@ -14,7 +15,7 @@ const projects = [
     tech: ["React", "Firebase", "Node.js", "Python"],
     demo: "https://mukti-portal.vercel.app/",
     repo: "https://github.com/shiv123-coder/Mukti-Portal",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop", // Collaboration/Portal
+    image: "/mukti-portal-preview.png",
   },
   {
     title: "LoanIQ",
@@ -23,7 +24,7 @@ const projects = [
     tech: ["React", "Node.js", "Firebase", "OCR", "NLP"],
     demo: "https://loan-iq-ai.vercel.app",
     repo: "https://github.com/shiv123-coder/LoanIQ-AI",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop", // Tech dashboard
+    image: "/loaniq-preview.png",
   },
   {
     title: "VisionKirana",
@@ -32,7 +33,7 @@ const projects = [
     tech: ["React 19", "FastAPI", "PostgreSQL", "OpenCV"],
     demo: "https://vision-kirana.vercel.app/",
     repo: "https://github.com/shiv123-coder/vision-kirana",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1000&auto=format&fit=crop", // Code/AI
+    image: "/vision-kirana-preview.png",
   },
   {
     title: "SkyBanking",
@@ -41,7 +42,7 @@ const projects = [
     tech: ["Java 21", "PostgreSQL", "Servlets", "Stripe"],
     demo: "https://skybanking.onrender.com",
     repo: "https://github.com/shiv123-coder/skybanking",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop", // Finance/Banking
+    image: "/skybanking-preview.png",
   },
   {
     title: "DriveZone",
@@ -50,7 +51,7 @@ const projects = [
     tech: ["Java", "JSP", "Servlets", "Tomcat"],
     demo: "https://drivezone-project.onrender.com/",
     repo: "https://github.com/shiv123-coder/DriveZone",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop", // Cars/Showroom
+    image: "/drivezone-preview.png",
   },
   {
     title: "MidwayCafe",
@@ -59,7 +60,7 @@ const projects = [
     tech: ["PHP", "Laravel", "PostgreSQL"],
     demo: "https://midwaycafe-restaurant-e-commerce-system.onrender.com/",
     repo: "https://github.com/shiv123-coder/Restaurant_Ecommerce_System_Laravel",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop", // Cafe/Restaurant
+    image: "/midwaycafe-preview.png",
   },
 ];
 
@@ -104,14 +105,12 @@ export default function Projects() {
             >
               {/* Project Image Header */}
               <div className="relative h-[280px] w-full overflow-hidden border-b border-border bg-secondary">
-                <img 
-                  src={project.demo ? `https://image.thum.io/get/width/1200/crop/800/noanimate/${project.demo}` : project.image} 
+                <Image 
+                  src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  onError={(e) => {
-                    // Fallback to placeholder if dynamic screenshot fails
-                    (e.target as HTMLImageElement).src = project.image;
-                  }}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
