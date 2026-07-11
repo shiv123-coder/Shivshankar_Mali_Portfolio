@@ -39,8 +39,8 @@ const projects = [
     description: "A micro-lending intelligence platform built to assess the creditworthiness of unbanked local stores. By utilizing computer vision to analyze store inventory and foot traffic in real-time, it dynamically generates risk profiles and loan eligibility metrics without requiring traditional financial histories.",
     category: "AI & Full-Stack",
     tech: ["React 19", "FastAPI", "PostgreSQL", "OpenCV"],
-    demo: "https://vision-kirana.vercel.app/",
-    repo: "https://github.com/shiv123-coder/vision-kirana",
+    demo: "https://visionkirana.vercel.app/",
+    repo: "https://github.com/shiv123-coder/visionkirana",
     image: visionKiranaImg,
   },
   {
