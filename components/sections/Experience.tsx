@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, Trophy, Award, ExternalLink, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -60,8 +60,26 @@ const achievements = [
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<"experience" | "achievements">("experience");
 
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash === "#achievements") {
+        setActiveTab("achievements");
+      } else if (hash === "#certifications" || hash === "#experience") {
+        setActiveTab("experience");
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
+
   return (
     <section id="experience" className="relative py-24 bg-background border-t border-border">
+      {/* Invisible anchor points for navbar links */}
+      <div id="certifications" className="absolute top-0 pointer-events-none" />
+      <div id="achievements" className="absolute top-0 pointer-events-none" />
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Tab Controls */}
@@ -104,7 +122,6 @@ export default function Experience() {
             {activeTab === "experience" && (
               <motion.div
                 key="experience"
-                id="certifications"
                 initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
@@ -148,7 +165,6 @@ export default function Experience() {
             {activeTab === "achievements" && (
               <motion.div
                 key="achievements"
-                id="achievements"
                 initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}

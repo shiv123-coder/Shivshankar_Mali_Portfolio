@@ -6,7 +6,6 @@ import Navbar from "@/components/shared/Navbar";
 import CommandPalette from "@/components/shared/CommandPalette";
 import Footer from "@/components/shared/Footer";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
-import CustomCursor from "@/components/shared/CustomCursor";
 
 import { Toaster } from "sonner";
 
@@ -46,7 +45,6 @@ export default function RootLayout({
         >
           <Toaster position="bottom-right" theme="dark" toastOptions={{ style: { background: '#18181b', border: '1px solid rgba(255,255,255,0.1)', color: '#fafafa' } }} />
           <SmoothScroll>
-            <CustomCursor />
             <Navbar />
             <CommandPalette />
             {children}

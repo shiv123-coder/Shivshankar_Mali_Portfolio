@@ -19,15 +19,6 @@ import coralReefImg from "@/public/coral-ai-login-page.png";
 
 const projects = [
   {
-    title: "Coral Reef Admin Portal",
-    description: "An enterprise-grade administration portal for coral reef health monitoring and mapping. Designed to facilitate comprehensive tracking, data management, and visualization of reef ecosystems using AI-driven insights to support marine conservation efforts.",
-    category: "AI & Full-Stack",
-    tech: ["React", "Next.js", "Node.js", "Tailwind CSS"],
-    demo: "https://coral-reef-frontend.vercel.app/login",
-    repo: "https://github.com/shiv123-coder/coral-reef-health-mapping",
-    image: coralReefImg,
-  },
-  {
     title: "Mukti Portal",
     description: "A digital trust ecosystem designed to empower informal sector workers. It generates verifiable trust signals based on authentic work histories and peer validations, helping unbanked individuals build a reliable professional identity to access financial services (developed for VYOMA 2026).",
     category: "Full-Stack",
@@ -62,6 +53,15 @@ const projects = [
     demo: "https://skybanking.onrender.com",
     repo: "https://github.com/shiv123-coder/skybanking",
     image: skybankingImg,
+  },
+  {
+    title: "Coral Reef Admin Portal",
+    description: "An enterprise-grade administration portal for coral reef health monitoring and mapping. Designed to facilitate comprehensive tracking, data management, and visualization of reef ecosystems using AI-driven insights to support marine conservation efforts.",
+    category: "AI & Full-Stack",
+    tech: ["React", "Next.js", "Node.js", "Tailwind CSS"],
+    demo: "https://coral-reef-frontend.vercel.app/login",
+    repo: "https://github.com/shiv123-coder/coral-reef-health-mapping",
+    image: coralReefImg,
   },
   {
     title: "DriveZone",
@@ -113,13 +113,17 @@ export default function Projects() {
 
         {/* Clean uniform 2-column grid for larger cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {projects.map((project, i) => (
+          {projects.map((project, i) => {
+            const isLastOdd = projects.length % 2 !== 0 && i === projects.length - 1;
+            
+            return (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={cn(isLastOdd && "lg:col-span-2 lg:w-[calc(50%-1.25rem)] lg:mx-auto")}
             >
               <TiltCard className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 h-full">
               {/* Project Image Header */}
@@ -176,7 +180,8 @@ export default function Projects() {
               </div>
               </TiltCard>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
         
       </div>
