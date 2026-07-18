@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import TiltCard from "@/components/shared/TiltCard";
 
 // Static imports for automatic blur placeholders
 import muktiImg from "@/public/mukti-portal-preview.png";
@@ -14,8 +15,18 @@ import visionKiranaImg from "@/public/vision-kirana-preview.png";
 import skybankingImg from "@/public/skybanking-preview.png";
 import drivezoneImg from "@/public/drivezone-preview.png";
 import midwaycafeImg from "@/public/midwaycafe-preview.png";
+import coralReefImg from "@/public/coral-ai-login-page.png";
 
 const projects = [
+  {
+    title: "Coral Reef Admin Portal",
+    description: "An enterprise-grade administration portal for coral reef health monitoring and mapping. Designed to facilitate comprehensive tracking, data management, and visualization of reef ecosystems using AI-driven insights to support marine conservation efforts.",
+    category: "AI & Full-Stack",
+    tech: ["React", "Next.js", "Node.js", "Tailwind CSS"],
+    demo: "https://coral-reef-frontend.vercel.app/login",
+    repo: "https://github.com/shiv123-coder/coral-reef-health-mapping",
+    image: coralReefImg,
+  },
   {
     title: "Mukti Portal",
     description: "A digital trust ecosystem designed to empower informal sector workers. It generates verifiable trust signals based on authentic work histories and peer validations, helping unbanked individuals build a reliable professional identity to access financial services (developed for VYOMA 2026).",
@@ -109,8 +120,8 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
             >
+              <TiltCard className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 h-full">
               {/* Project Image Header */}
               <div className="relative h-[280px] w-full overflow-hidden border-b border-border bg-secondary">
                 <Image 
@@ -163,6 +174,7 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

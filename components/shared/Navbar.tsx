@@ -57,7 +57,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-1 group">
             <span className="text-2xl font-black tracking-tighter text-foreground group-hover:opacity-80 transition-opacity">
-              Shivshankar<span className="text-primary">.</span>
+              Shivshankar Mali<span className="text-primary">/&gt;</span>
             </span>
           </Link>
 

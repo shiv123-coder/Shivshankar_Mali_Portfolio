@@ -52,6 +52,7 @@ const achievements = [
   {
     title: "Hackathons",
     description: "Participated in TenZorX AI Hackathon (Team CodeStorm - Built LoanIQ) & UIDAI Hackathon.",
+    link: "https://drive.google.com/file/d/1HUlUk8fwqefLBVxeIl4censhd-O7jdY6/view?usp=sharing",
     icon: Trophy,
   }
 ];

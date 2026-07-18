@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Download, TerminalSquare } from "lucide-react";
+import { Download, TerminalSquare, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
+import MagneticButton from "@/components/shared/MagneticButton";
 
 export default function Hero() {
   const roles = ["Software Engineer", "Full Stack Developer", "Open Source Contributor", "Problem Solver"];
@@ -45,9 +46,27 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-background">
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] opacity-40 mix-blend-screen" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px] opacity-30 mix-blend-screen" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+        <motion.div 
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] mix-blend-screen" 
+        />
+        <motion.div 
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.2, 0.4, 0.2],
+            x: [0, -40, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px] mix-blend-screen" 
+        />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
@@ -69,6 +88,18 @@ export default function Hero() {
           {/* Left Column: Text Content */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
             
+            {/* Availability Badge */}
+            <motion.div
+              variants={FADE_UP_ANIMATION_VARIANTS}
+              className="mb-8 inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium tracking-wide shadow-[0_0_20px_rgba(34,197,94,0.15)]"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              Available for Opportunities
+            </motion.div>
+
             {/* Subtitle Tags */}
             <motion.div 
               variants={FADE_UP_ANIMATION_VARIANTS} 
@@ -111,22 +142,26 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center lg:justify-start mt-2">
-              <Link 
-                href="#projects" 
-                className="flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center"
-              >
-                <TerminalSquare className="w-5 h-5" />
-                View Architecture
-              </Link>
-              <a 
-                href="https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-secondary/80 border border-border text-foreground px-8 py-3.5 rounded-full font-semibold hover:bg-secondary transition-all active:scale-95 w-full sm:w-auto justify-center"
-              >
-                <Download className="w-5 h-5 text-primary" />
-                Download Resume
-              </a>
+              <MagneticButton>
+                <Link 
+                  href="#projects" 
+                  className="flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center"
+                >
+                  <TerminalSquare className="w-5 h-5" />
+                  View Architecture
+                </Link>
+              </MagneticButton>
+              <MagneticButton>
+                <a 
+                  href="https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-secondary/80 border border-border text-foreground px-8 py-3.5 rounded-full font-semibold hover:bg-secondary transition-all active:scale-95 w-full sm:w-auto justify-center"
+                >
+                  <Download className="w-5 h-5 text-primary" />
+                  Download Resume
+                </a>
+              </MagneticButton>
             </motion.div>
 
             {/* Social Links */}
@@ -148,6 +183,13 @@ export default function Hero() {
               >
                 <span className="sr-only">LinkedIn</span>
                 <FaLinkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="mailto:shivashankrmali7@gmail.com" 
+                className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
+              >
+                <span className="sr-only">Email</span>
+                <Mail className="w-5 h-5" />
               </a>
             </motion.div>
           </div>
