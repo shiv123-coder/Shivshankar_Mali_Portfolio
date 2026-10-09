@@ -16,6 +16,7 @@ import skybankingImg from "@/public/skybanking-preview.png";
 import drivezoneImg from "@/public/drivezone-preview.png";
 import midwaycafeImg from "@/public/midwaycafe-preview.png";
 import coralReefImg from "@/public/coral-ai-login-page.png";
+import antarikshImg from "@/public/Antariksh-OS .jpeg";
 
 const projects = [
   {
@@ -25,7 +26,7 @@ const projects = [
     tech: ["Next.js", "FastAPI", "PyTorch", "ONNX", "FFT"],
     demo: "",
     repo: "https://github.com/shiv123-coder/ANTARIKSH-OS",
-    image: coralReefImg, // reusing an image for the AI platform
+    image: antarikshImg,
   },
   {
     title: "Mukti Portal",
