@@ -137,7 +137,7 @@ export default function Contact() {
                     <span className="text-sm font-medium">GitHub</span>
                   </a>
                   <a 
-                    href="https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf" 
+                    href="/Shivshankar_Mali_CSE_Resume_2027.pdf" 
                     target="_blank" 
                     rel="noreferrer"
                     className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-accent hover:text-background transition-all"

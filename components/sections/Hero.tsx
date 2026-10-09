@@ -153,7 +153,7 @@ export default function Hero() {
               </MagneticButton>
               <MagneticButton>
                 <a 
-                  href="https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf"
+                  href="/Shivshankar_Mali_CSE_Resume_2027.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-secondary/80 border border-border text-foreground px-8 py-3.5 rounded-full font-semibold hover:bg-secondary transition-all active:scale-95 w-full sm:w-auto justify-center"

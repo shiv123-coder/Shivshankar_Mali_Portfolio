@@ -19,6 +19,15 @@ import coralReefImg from "@/public/coral-ai-login-page.png";
 
 const projects = [
   {
+    title: "ANTARIKSH-OS",
+    description: "Edge-native AI platform for earth observation and disaster response, exploring radar-guided cloud removal, crop-stress detection, and flood-aware evacuation support on local hardware.",
+    category: "AI & Full-Stack",
+    tech: ["Next.js", "FastAPI", "PyTorch", "ONNX", "FFT"],
+    demo: "",
+    repo: "https://github.com/shiv123-coder/ANTARIKSH-OS",
+    image: coralReefImg, // reusing an image for the AI platform
+  },
+  {
     title: "Mukti Portal",
     description: "A digital trust ecosystem designed to empower informal sector workers. It generates verifiable trust signals based on authentic work histories and peer validations, helping unbanked individuals build a reliable professional identity to access financial services (developed for VYOMA 2026).",
     category: "Full-Stack",

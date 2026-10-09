@@ -7,9 +7,17 @@ import { cn } from "@/lib/utils";
 
 const experiences = [
   {
+    role: "Freelance AI & Full-Stack Developer",
+    company: "Self-Employed",
+    date: "Present",
+    description: "Build, deploy, and maintain web applications for clients, including work intended for real end users. Handle application development, environment configuration, deployment, and ongoing maintenance.",
+    certificate: "",
+    icon: Code,
+  },
+  {
     role: "Java & DSA Intern",
     company: "Talent Battle Pvt. Ltd.",
-    date: "2024",
+    date: "July 2025",
     description: "Strengthened core Java and OOP concepts by implementing foundational Data Structures and optimizing algorithms. Built robust logical problem-solving foundations.",
     certificate: "https://drive.google.com/file/d/1qzONcMVjVLykMn06f6GnNJDo4S2D311v/view?usp=sharing",
     icon: Briefcase,
@@ -148,14 +156,16 @@ export default function Experience() {
                       <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                         {exp.description}
                       </p>
-                      <a 
-                        href={exp.certificate} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 px-4 py-2 rounded-lg transition-colors"
-                      >
-                        View Certificate <ExternalLink className="w-4 h-4" />
-                      </a>
+                      {exp.certificate && (
+                        <a 
+                          href={exp.certificate} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 px-4 py-2 rounded-lg transition-colors"
+                        >
+                          View Certificate <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 ))}

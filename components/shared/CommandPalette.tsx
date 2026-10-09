@@ -112,7 +112,7 @@ export default function CommandPalette() {
 
           <Command.Group heading="Actions" className="text-xs font-medium text-muted-foreground px-2 py-1 mt-2">
             <Command.Item 
-              onSelect={() => runCommand(() => window.open("https://shiv123-coder.github.io/Shivshankar_Mali_CSE_Resume_2027.pdf", "_blank"))}
+              onSelect={() => runCommand(() => window.open("/Shivshankar_Mali_CSE_Resume_2027.pdf", "_blank"))}
               className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
             >
               <FileText className="mr-2 h-4 w-4" />

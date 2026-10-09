@@ -21,7 +21,7 @@ const cards = [
   },
   {
     title: "Education",
-    description: "B.E. Computer Engineering • JSPM BSIOTR (Expected 2027).",
+    description: "B.E. Computer Engineering at JSPM's BSIOTR, Pune (2023–2027) with a 9.29/10 CGPA.",
     icon: GraduationCap,
     className: "md:col-span-1",
     iconClassName: "text-primary",
@@ -65,9 +65,7 @@ export default function About() {
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">About Me</h2>
           <div className="w-20 h-1 bg-primary rounded-full mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            I am a Full Stack Developer deeply passionate about software engineering. 
-            I don't just write code; I architect systems designed to scale, perform efficiently, 
-            and solve real-world problems.
+            I am a Computer Engineering undergraduate building full-stack applications and integrating AI/ML capabilities into practical products. I am currently developing edge-native AI platforms and taking on freelance development work.
           </p>
         </motion.div>
 
