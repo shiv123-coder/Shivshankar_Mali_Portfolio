@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
-import { Search, User, Briefcase, Code, Terminal, FileText, Mail, Trophy, Award, MessageSquare } from "lucide-react";
+import { Search, User, Briefcase, Code, Terminal, FileText, Mail, Trophy, Award, MessageSquare, ExternalLink } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
 export default function CommandPalette() {
@@ -107,6 +109,37 @@ export default function CommandPalette() {
             >
               <FileText className="mr-2 h-4 w-4" />
               <span>Technical Blog</span>
+            </Command.Item>
+          </Command.Group>
+
+          <Command.Group heading="Coding Profiles & Socials" className="text-xs font-medium text-muted-foreground px-2 py-1 mt-2">
+            <Command.Item 
+              onSelect={() => runCommand(() => window.open("https://leetcode.com/u/shivshankar_Mali/", "_blank"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <SiLeetcode className="mr-2 h-4 w-4 text-[#FFA116]" />
+              <span>LeetCode (shivshankar_Mali)</span>
+            </Command.Item>
+            <Command.Item 
+              onSelect={() => runCommand(() => window.open("https://www.codechef.com/users/shiv_core", "_blank"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <SiCodechef className="mr-2 h-4 w-4 text-[#5B4638] dark:text-[#D1A684]" />
+              <span>CodeChef (shiv_core)</span>
+            </Command.Item>
+            <Command.Item 
+              onSelect={() => runCommand(() => window.open("https://github.com/shiv123-coder", "_blank"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <FaGithub className="mr-2 h-4 w-4" />
+              <span>GitHub (shiv123-coder)</span>
+            </Command.Item>
+            <Command.Item 
+              onSelect={() => runCommand(() => window.open("https://www.linkedin.com/in/shivshankar-mali-b46198314/", "_blank"))}
+              className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2.5 text-sm outline-none aria-selected:bg-accent/20 aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mt-1"
+            >
+              <FaLinkedin className="mr-2 h-4 w-4 text-[#0077B5]" />
+              <span>LinkedIn Profile</span>
             </Command.Item>
           </Command.Group>
 

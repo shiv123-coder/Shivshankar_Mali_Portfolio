@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Download, TerminalSquare, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import Link from "next/link";
 import MagneticButton from "@/components/shared/MagneticButton";
 
@@ -164,12 +165,13 @@ export default function Hero() {
               </MagneticButton>
             </motion.div>
 
-            {/* Social Links */}
-            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center justify-center lg:justify-start gap-4 mt-12">
+            {/* Social & Coding Links */}
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center justify-center lg:justify-start gap-3 mt-12 flex-wrap">
               <a 
                 href="https://github.com/shiv123-coder" 
                 target="_blank" 
                 rel="noreferrer"
+                title="GitHub: shiv123-coder"
                 className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
               >
                 <span className="sr-only">GitHub</span>
@@ -179,13 +181,35 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/shivshankar-mali-b46198314/" 
                 target="_blank" 
                 rel="noreferrer"
+                title="LinkedIn: Shivshankar Mali"
                 className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
               >
                 <span className="sr-only">LinkedIn</span>
                 <FaLinkedin className="w-5 h-5" />
               </a>
               <a 
+                href="https://leetcode.com/u/shivshankar_Mali/" 
+                target="_blank" 
+                rel="noreferrer"
+                title="LeetCode: shivshankar_Mali"
+                className="p-3 bg-secondary/50 rounded-full hover:bg-[#FFA116] hover:text-black text-muted-foreground transition-all duration-300 group"
+              >
+                <span className="sr-only">LeetCode</span>
+                <SiLeetcode className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.codechef.com/users/shiv_core" 
+                target="_blank" 
+                rel="noreferrer"
+                title="CodeChef: shiv_core"
+                className="p-3 bg-secondary/50 rounded-full hover:bg-[#5B4638] hover:text-white text-muted-foreground transition-all duration-300 group"
+              >
+                <span className="sr-only">CodeChef</span>
+                <SiCodechef className="w-5 h-5" />
+              </a>
+              <a 
                 href="mailto:shivashankrmali7@gmail.com" 
+                title="Email: shivashankrmali7@gmail.com"
                 className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
               >
                 <span className="sr-only">Email</span>

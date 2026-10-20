@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, Trophy, Award, ExternalLink, Code } from "lucide-react";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
 const experiences = [
@@ -41,9 +42,15 @@ const achievements = [
   },
   {
     title: "100 Days LeetCode Challenge",
-    description: "Earned the 50 Days Coding Badge across two consecutive years (2025 & 2026).",
-    link: "https://drive.google.com/file/d/1Rs17OSfri9b4_rHCRNbOCamKnpvfDRWB/view?usp=sharing",
-    icon: Code,
+    description: "Earned the 50 Days Coding Badge across two consecutive years (2025 & 2026). Active problem solver on LeetCode (@shivshankar_Mali).",
+    link: "https://leetcode.com/u/shivshankar_Mali/",
+    icon: SiLeetcode,
+  },
+  {
+    title: "CodeChef Competitive Programming",
+    description: "Active competitive programmer on CodeChef (@shiv_core) participating in rated algorithmic contests and problem-solving.",
+    link: "https://www.codechef.com/users/shiv_core",
+    icon: SiCodechef,
   },
   {
     title: "VYOMA 2026 Prototype Competition",
@@ -206,7 +213,7 @@ export default function Experience() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors"
                         >
-                          Verify Credential <ExternalLink className="w-3 h-3" />
+                          {achievement.link.includes("leetcode.com") || achievement.link.includes("codechef.com") ? "View Profile" : "Verify Credential"} <ExternalLink className="w-3 h-3" />
                         </a>
                       )}
                     </div>

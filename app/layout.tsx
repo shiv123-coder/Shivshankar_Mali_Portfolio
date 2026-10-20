@@ -23,6 +23,16 @@ export const metadata: Metadata = {
   title: "Shivshankar D. Mali | Software Engineer",
   description: "Enterprise portfolio of Shivshankar D. Mali, a Full Stack Developer specializing in AI integrations and scalable architectures.",
   keywords: ["Software Engineer", "Full Stack Developer", "AI Integration", "React", "Next.js", "Java", "Portfolio"],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({

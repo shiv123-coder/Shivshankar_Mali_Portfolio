@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Send, CheckCircle2, FileText } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
@@ -117,34 +118,52 @@ export default function Contact() {
 
               <div className="flex flex-col gap-4">
                 <h3 className="text-lg font-semibold text-foreground">Connect Online</h3>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <a 
                     href="https://www.linkedin.com/in/shivshankar-mali-b46198314/" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-primary hover:text-background transition-all"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-[#0077B5] hover:text-white transition-all group"
                   >
-                    <FaLinkedin className="w-5 h-5" />
+                    <FaLinkedin className="w-5 h-5 text-muted-foreground group-hover:text-white transition-colors" />
                     <span className="text-sm font-medium">LinkedIn</span>
                   </a>
                   <a 
                     href="https://github.com/shiv123-coder" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-foreground hover:text-background transition-all"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-foreground hover:text-background transition-all group"
                   >
-                    <FaGithub className="w-5 h-5" />
+                    <FaGithub className="w-5 h-5 text-muted-foreground group-hover:text-background transition-colors" />
                     <span className="text-sm font-medium">GitHub</span>
+                  </a>
+                  <a 
+                    href="https://leetcode.com/u/shivshankar_Mali/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-[#FFA116] hover:text-black transition-all group"
+                  >
+                    <SiLeetcode className="w-5 h-5 text-muted-foreground group-hover:text-black transition-colors" />
+                    <span className="text-sm font-medium">LeetCode</span>
+                  </a>
+                  <a 
+                    href="https://www.codechef.com/users/shiv_core" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-[#5B4638] hover:text-white transition-all group"
+                  >
+                    <SiCodechef className="w-5 h-5 text-muted-foreground group-hover:text-white transition-colors" />
+                    <span className="text-sm font-medium">CodeChef</span>
                   </a>
                   <a 
                     href="/Shivshankar_Mali_CSE_Resume_2027.pdf" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-accent hover:text-background transition-all"
+                    className="sm:col-span-2 flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground hover:bg-primary hover:text-primary-foreground transition-all group"
                     title="Download Resume"
                   >
-                    <FileText className="w-5 h-5" />
-                    <span className="text-sm font-medium">Resume</span>
+                    <FileText className="w-5 h-5 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+                    <span className="text-sm font-medium">Download Resume (PDF)</span>
                   </a>
                 </div>
               </div>

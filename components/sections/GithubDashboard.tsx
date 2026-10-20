@@ -1,5 +1,6 @@
-import { Star, GitFork, Users, BookOpen } from "lucide-react";
+import { Star, GitFork, Users, BookOpen, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import GithubCalendarClient from "./GithubCalendarClient";
 
 // Fetching with Next.js ISR (Cache revalidates every 1 hour)
@@ -35,15 +36,40 @@ export default async function GithubDashboard() {
     <section id="github" className="relative py-24 bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
         
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
-            <FaGithub className="w-10 h-10 text-primary" /> GitHub Activity
-          </h2>
-          <div className="w-20 h-1 bg-primary rounded-full mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            Real-time insights directly from my GitHub profile. I believe in open-source 
-            and continuous daily shipping.
-          </p>
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
+              <FaGithub className="w-10 h-10 text-primary" /> GitHub Activity
+            </h2>
+            <div className="w-20 h-1 bg-primary rounded-full mb-6" />
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Real-time insights directly from my GitHub profile. I believe in open-source 
+              and continuous daily shipping.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 flex-wrap">
+            <a
+              href="https://leetcode.com/u/shivshankar_Mali/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-[#FFA116]/50 hover:bg-[#FFA116]/10 text-sm font-medium transition-all group shadow-sm"
+            >
+              <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
+              <span>LeetCode Profile</span>
+              <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </a>
+            <a
+              href="https://www.codechef.com/users/shiv_core"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-[#5B4638]/50 hover:bg-[#5B4638]/10 text-sm font-medium transition-all group shadow-sm"
+            >
+              <SiCodechef className="w-4 h-4 text-[#5B4638] dark:text-[#D1A684]" />
+              <span>CodeChef Profile</span>
+              <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </a>
+          </div>
         </div>
 
         {/* Top Stats */}
