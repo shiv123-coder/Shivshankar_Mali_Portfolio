@@ -53,7 +53,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Toaster position="bottom-right" theme="dark" toastOptions={{ style: { background: '#18181b', border: '1px solid rgba(255,255,255,0.1)', color: '#fafafa' } }} />
           <SmoothScroll>
             <Navbar />
             <CommandPalette />

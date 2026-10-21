@@ -2,23 +2,28 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Download, TerminalSquare, Mail } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiLeetcode, SiCodechef } from "react-icons/si";
+import { ArrowRight, UserCheck, Download, GraduationCap, BarChart3, Rocket, Trophy } from "lucide-react";
 import Link from "next/link";
-import MagneticButton from "@/components/shared/MagneticButton";
+import RecruiterSnapshotModal from "@/components/shared/RecruiterSnapshotModal";
 
 export default function Hero() {
-  const roles = ["Software Engineer", "Full Stack Developer", "Open Source Contributor", "Problem Solver"];
+  const roles = [
+    "Competitive Programmer (300+ Solved)",
+    "AI-Driven Software Engineer",
+    "Full-Stack MERN Dev",
+    "ANTARIKSH-OS Architect",
+    "Java & Cloud Engineer",
+  ];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Typewriter Effect
   useEffect(() => {
     const timeout = setTimeout(() => {
       const fullText = roles[currentRoleIndex];
-      
+
       if (!isDeleting) {
         setCurrentText(fullText.substring(0, currentText.length + 1));
         if (currentText === fullText) {
@@ -33,209 +38,196 @@ export default function Hero() {
           return;
         }
       }
-    }, isDeleting ? 40 : 100);
-    
+    }, isDeleting ? 35 : 85);
+
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, currentRoleIndex]);
 
-  const FADE_UP_ANIMATION_VARIANTS = {
-    hidden: { opacity: 0, y: 15 },
-    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 100, damping: 20 } },
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-background">
-      {/* Abstract Background Elements */}
-      <div className="absolute inset-0 z-0">
-        <motion.div 
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] mix-blend-screen" 
-        />
-        <motion.div 
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.2, 0.4, 0.2],
-            x: [0, -40, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px] mix-blend-screen" 
-        />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
-      </div>
+    <>
+      <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#070b12] text-foreground">
+        {/* Subtle Cyber Grid Background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b1f_1px,transparent_1px),linear-gradient(to_bottom,#1e293b1f_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <motion.div
-          initial="hidden"
-          animate="show"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            show: {
-              transition: {
-                staggerChildren: 0.15,
-              },
-            },
-          }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center"
-        >
-          
-          {/* Left Column: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+        {/* Soft Ambient Radial Lights */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Availability Badge */}
+            {/* Left Column: Hero Details */}
             <motion.div
-              variants={FADE_UP_ANIMATION_VARIANTS}
-              className="mb-8 inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium tracking-wide shadow-[0_0_20px_rgba(34,197,94,0.15)]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1"
             >
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-              </span>
-              Available for Opportunities
-            </motion.div>
+              {/* Top Badges: Open for Roles, CodeVita Rank 2143, and BSIOTR 2nd Topper */}
+              <div className="mb-6 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/40 bg-[#091524]/80 text-cyan-400 text-xs font-mono font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
+                  </span>
+                  <span>Open for Internships &amp; Full-Time Roles</span>
+                </div>
 
-            {/* Subtitle Tags */}
-            <motion.div 
-              variants={FADE_UP_ANIMATION_VARIANTS} 
-              className="mb-6 flex flex-wrap justify-center lg:justify-start items-center gap-3 text-primary text-xs md:text-sm font-bold tracking-[0.2em] uppercase"
-            >
-              <span>Full Stack Developer</span>
-              <span className="text-muted-foreground/40 hidden sm:inline">|</span>
-              <span>Java</span>
-              <span className="text-muted-foreground/40 hidden sm:inline">|</span>
-              <span>Next.js</span>
-              <span className="text-muted-foreground/40 hidden sm:inline">|</span>
-              <span>TypeScript</span>
-            </motion.div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-purple-500/40 bg-[#160f29]/80 text-purple-300 text-xs font-mono font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+                  <Trophy className="w-3.5 h-3.5 text-purple-400" />
+                  <span>TCS CodeVita Rank 2143</span>
+                </div>
 
-            {/* Prominent Name */}
-            <motion.h1 
-              variants={FADE_UP_ANIMATION_VARIANTS}
-              className="text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[6rem] font-bold tracking-tighter mb-4 leading-tight lg:leading-none"
-            >
-              <span className="text-foreground">Shivshankar</span><br className="hidden lg:block" />{" "}
-              <span className="text-primary">Mali</span>
-            </motion.h1>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-[#0a192f]/80 text-cyan-300 text-xs font-mono font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+                  <GraduationCap className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>9.53 CGPA • BSIOTR 2nd Topper</span>
+                </div>
+              </div>
 
-            {/* Dynamic Typing Text */}
-            <motion.div 
-              variants={FADE_UP_ANIMATION_VARIANTS}
-              className="h-10 mb-4 text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground tracking-tight"
-            >
-              {currentText}<span className="animate-pulse text-primary font-light">|</span>
-            </motion.div>
+              {/* Main Heading: Hi, I'm Shivshankar Mali */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-bold tracking-tight mb-4 leading-tight">
+                <span className="text-white">Hi, I&apos;m </span>
+                <span className="text-[#22d3ee]">Shivshankar </span>
+                <span className="text-[#c084fc]">Mali</span>
+              </h1>
 
-            {/* Bio Paragraph */}
-            <motion.p 
-              variants={FADE_UP_ANIMATION_VARIANTS}
-              className="text-muted-foreground max-w-lg mb-10 text-base md:text-lg leading-relaxed text-center lg:text-left"
-            >
-              I build scalable enterprise software and dynamic web applications. 
-              Passionate about clean architecture, solving complex problems, and creating seamless user experiences.
-            </motion.p>
+              {/* Dynamic Typewriter Text */}
+              <div className="h-10 sm:h-12 mb-6 text-xl sm:text-2xl md:text-3xl font-semibold text-white tracking-tight flex items-center justify-center lg:justify-start">
+                <span>{currentText}</span>
+                <span className="animate-pulse text-cyan-400 font-light ml-0.5">|</span>
+              </div>
 
-            {/* CTAs */}
-            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center lg:justify-start mt-2">
-              <MagneticButton>
-                <Link 
-                  href="#projects" 
-                  className="flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20 w-full sm:w-auto justify-center"
+              {/* Bio Description matching reference */}
+              <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
+                Computer Engineering student specializing in building real-world MERN stack applications, AI-driven microservices, and cloud architectures. Focused on clean system design and high-performance applications.
+              </p>
+
+              {/* Action Buttons (3-Button Layout matching reference) */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 w-full">
+                {/* 1. Get In Touch */}
+                <Link
+                  href="#contact"
+                  className="flex items-center gap-2 bg-[#22d3ee] hover:bg-[#38bdf8] text-black font-bold px-7 py-3.5 rounded-full text-sm transition-all shadow-[0_0_25px_rgba(34,211,238,0.35)] active:scale-95"
                 >
-                  <TerminalSquare className="w-5 h-5" />
-                  View Architecture
+                  <span>Get In Touch</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
-              </MagneticButton>
-              <MagneticButton>
-                <a 
+
+                {/* 2. Recruiter Snapshot */}
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="flex items-center gap-2 bg-[#0c1626]/90 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10 font-semibold px-6 py-3.5 rounded-full text-sm transition-all shadow-sm active:scale-95"
+                >
+                  <UserCheck className="w-4 h-4 text-cyan-400" />
+                  <span>Recruiter Snapshot</span>
+                </button>
+
+                {/* 3. Resume */}
+                <a
                   href="/Shivshankar_Mali_CSE_Resume_2027.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-secondary/80 border border-border text-foreground px-8 py-3.5 rounded-full font-semibold hover:bg-secondary transition-all active:scale-95 w-full sm:w-auto justify-center"
+                  className="flex items-center gap-2 bg-[#121927] border border-white/10 hover:border-white/20 text-white hover:bg-[#1a2336] font-semibold px-6 py-3.5 rounded-full text-sm transition-all active:scale-95"
                 >
-                  <Download className="w-5 h-5 text-primary" />
-                  Download Resume
+                  <span>Resume</span>
+                  <Download className="w-4 h-4 text-gray-300" />
                 </a>
-              </MagneticButton>
+              </div>
             </motion.div>
 
-            {/* Social & Coding Links */}
-            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center justify-center lg:justify-start gap-3 mt-12 flex-wrap">
-              <a 
-                href="https://github.com/shiv123-coder" 
-                target="_blank" 
-                rel="noreferrer"
-                title="GitHub: shiv123-coder"
-                className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
-              >
-                <span className="sr-only">GitHub</span>
-                <FaGithub className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/shivshankar-mali-b46198314/" 
-                target="_blank" 
-                rel="noreferrer"
-                title="LinkedIn: Shivshankar Mali"
-                className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <FaLinkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://leetcode.com/u/shivshankar_Mali/" 
-                target="_blank" 
-                rel="noreferrer"
-                title="LeetCode: shivshankar_Mali"
-                className="p-3 bg-secondary/50 rounded-full hover:bg-[#FFA116] hover:text-black text-muted-foreground transition-all duration-300 group"
-              >
-                <span className="sr-only">LeetCode</span>
-                <SiLeetcode className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://www.codechef.com/users/shiv_core" 
-                target="_blank" 
-                rel="noreferrer"
-                title="CodeChef: shiv_core"
-                className="p-3 bg-secondary/50 rounded-full hover:bg-[#5B4638] hover:text-white text-muted-foreground transition-all duration-300 group"
-              >
-                <span className="sr-only">CodeChef</span>
-                <SiCodechef className="w-5 h-5" />
-              </a>
-              <a 
-                href="mailto:shivashankrmali7@gmail.com" 
-                title="Email: shivashankrmali7@gmail.com"
-                className="p-3 bg-secondary/50 rounded-full hover:bg-primary hover:text-background text-muted-foreground transition-all duration-300 group"
-              >
-                <span className="sr-only">Email</span>
-                <Mail className="w-5 h-5" />
-              </a>
+            {/* Right Column: Circular Photo with Glowing Ring & Orbiting Badges */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2 mb-6 lg:mb-0"
+            >
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                
+                {/* Glowing Gradient Border (Cyan to Purple) */}
+                <div className="absolute -inset-1.5 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-sm opacity-80 animate-pulse-subtle" />
+                
+                {/* Image Container */}
+                <div className="relative w-full h-full rounded-full overflow-hidden border-[4px] border-[#070b12] bg-[#0c172a] shadow-2xl">
+                  <img
+                    src="https://github.com/shiv123-coder.png"
+                    alt="Shivshankar Mali"
+                    className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+
+                {/* Floating Orbit Badge 1: Top-Left (Academics) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute -top-3 -left-3 sm:top-2 sm:-left-8 bg-[#0c172a]/95 backdrop-blur-md border border-cyan-500/30 rounded-2xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20 hover:scale-105 transition-transform"
+                >
+                  <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+                    <GraduationCap className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+                      ACADEMICS (2ND TOPPER)
+                    </div>
+                    <div className="text-xs sm:text-sm font-bold text-cyan-400">
+                      9.53 CGPA
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Floating Orbit Badge 2: Left (LeetCode & DSA) */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute top-1/2 -left-6 sm:top-[58%] sm:-left-12 -translate-y-1/2 bg-[#0c172a]/95 backdrop-blur-md border border-emerald-500/30 rounded-2xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20 hover:scale-105 transition-transform"
+                >
+                  <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+                    <BarChart3 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+                      DSA &amp; LEETCODE
+                    </div>
+                    <div className="text-xs sm:text-sm font-bold text-emerald-400">
+                      300+ Solved
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Floating Orbit Badge 3: Bottom-Right (TCS CodeVita) */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="absolute -bottom-2 -right-2 sm:bottom-4 sm:-right-6 bg-[#0c172a]/95 backdrop-blur-md border border-purple-500/30 rounded-2xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20 hover:scale-105 transition-transform"
+                >
+                  <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400">
+                    <Rocket className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+                      GLOBAL RANK
+                    </div>
+                    <div className="text-xs sm:text-sm font-bold text-purple-400">
+                      CODEVITA 2143
+                    </div>
+                  </div>
+                </motion.div>
+
+              </div>
             </motion.div>
+
           </div>
+        </div>
+      </section>
 
-          {/* Right Column: Profile Image */}
-          <motion.div 
-            variants={FADE_UP_ANIMATION_VARIANTS} 
-            className="lg:col-span-5 flex justify-center lg:justify-end items-center order-1 lg:order-2 mb-12 lg:mb-0"
-          >
-            <div className="relative group w-56 h-56 md:w-72 md:h-72 lg:w-96 lg:h-96">
-              {/* Glowing ring effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
-              <img 
-                src="https://github.com/shiv123-coder.png" 
-                alt="Shivshankar Mali"
-                className="relative w-full h-full rounded-full object-cover border-[4px] border-background shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-            </div>
-          </motion.div>
-
-        </motion.div>
-      </div>
-    </section>
+      {/* Recruiter 30-Sec Snapshot Modal */}
+      <RecruiterSnapshotModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }

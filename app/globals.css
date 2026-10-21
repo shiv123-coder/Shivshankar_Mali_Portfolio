@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
 @theme inline {
+  --font-pixel: 'Pixelify Sans', 'Silkscreen', 'Press Start 2P', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
@@ -97,3 +99,30 @@ body {
   background: var(--primary);
   color: var(--primary-foreground);
 }
+
+.font-pixel {
+  font-family: 'Pixelify Sans', 'Silkscreen', 'Press Start 2P', monospace;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-scanline {
+  animation: scanline 6s linear infinite;
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 25px rgba(6, 182, 212, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.9)) drop-shadow(0 0 40px rgba(6, 182, 212, 0.5));
+  }
+}
+
+.animate-cyber-pulse {
+  animation: cyber-pulse 3s ease-in-out infinite;
+}
+

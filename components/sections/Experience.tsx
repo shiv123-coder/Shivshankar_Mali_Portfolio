@@ -35,14 +35,20 @@ const experiences = [
 
 const achievements = [
   {
-    title: "TCS CodeVita Rank 2142",
-    description: "Secured a Global Rank of 2142 in the International Coding Contest by Tata Consultancy Services.",
+    title: "TCS CodeVita Rank 2143",
+    description: "Secured a Global Rank of 2143 in Season 13 of the International Coding Contest by Tata Consultancy Services.",
     link: "https://drive.google.com/file/d/1rH2a06f-mDsVEqGgX6KnBwNgQuLwVV1B/view?usp=sharing",
     icon: Trophy,
   },
   {
-    title: "100 Days LeetCode Challenge",
-    description: "Earned the 50 Days Coding Badge across two consecutive years (2025 & 2026). Active problem solver on LeetCode (@shivshankar_Mali).",
+    title: "Academic Honors & College 2nd Topper",
+    description: "Ranked as 2nd College Topper at JSPM's BSIOTR with a 9.53 CGPA. Also achieved 2nd College Topper in HSC at Jogeshwari Mata Jr. College with a 92.90 percentile in MHT-CET.",
+    link: "",
+    icon: Award,
+  },
+  {
+    title: "300+ Problems Solved (DSA & CP)",
+    description: "Solved 300+ data structures and algorithmic challenges across LeetCode (@shivshankar_Mali) and CodeChef (@shiv_core) with multiple streak badges.",
     link: "https://leetcode.com/u/shivshankar_Mali/",
     icon: SiLeetcode,
   },
