@@ -1,9 +1,70 @@
-import { Star, GitFork, Users, BookOpen, ExternalLink } from "lucide-react";
+import { Star, GitFork, Users, BookOpen, ExternalLink, Code2 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { SiLeetcode, SiCodechef } from "react-icons/si";
 import GithubCalendarClient from "./GithubCalendarClient";
+import LeetcodeCalendarClient from "./LeetcodeCalendarClient";
+import { LeetCodeData, fallbackLeetCodeData } from "@/lib/leetcodeSnapshot";
 
-// Fetching with Next.js ISR (Cache revalidates every 1 hour)
+// Fetch LeetCode User Data with Next.js ISR
+async function getLeetCodeUser(): Promise<LeetCodeData> {
+  const query = `
+    query userProfileCalendar($username: String!) {
+      matchedUser(username: $username) {
+        userCalendar {
+          activeYears
+          streak
+          totalActiveDays
+          submissionCalendar
+        }
+        submitStats {
+          acSubmissionNum {
+            difficulty
+            count
+            submissions
+          }
+        }
+        profile {
+          ranking
+          reputation
+        }
+      }
+    }
+  `;
+
+  try {
+    const res = await fetch("https://leetcode.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Referer": "https://leetcode.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+      body: JSON.stringify({
+        query,
+        variables: { username: "shivshankar_Mali" },
+      }),
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) return fallbackLeetCodeData;
+    const d = await res.json();
+    const u = d?.data?.matchedUser;
+    if (!u) return fallbackLeetCodeData;
+
+    return {
+      username: "shivshankar_Mali",
+      ranking: u.profile?.ranking ?? fallbackLeetCodeData.ranking,
+      streak: u.userCalendar?.streak ?? fallbackLeetCodeData.streak,
+      totalActiveDays: u.userCalendar?.totalActiveDays ?? fallbackLeetCodeData.totalActiveDays,
+      acSubmissionNum: u.submitStats?.acSubmissionNum ?? fallbackLeetCodeData.acSubmissionNum,
+      submissionCalendar: JSON.parse(u.userCalendar?.submissionCalendar || "{}"),
+    };
+  } catch (e) {
+    return fallbackLeetCodeData;
+  }
+}
+
+// Fetching GitHub with Next.js ISR (Cache revalidates every 1 hour)
 async function getGithubUser() {
   try {
     const res = await fetch("https://api.github.com/users/shiv123-coder", {
@@ -31,20 +92,26 @@ async function getRecentRepos() {
 export default async function GithubDashboard() {
   const user = await getGithubUser();
   const repos = await getRecentRepos();
+  const leetcode = await getLeetCodeUser();
 
   return (
-    <section id="github" className="relative py-24 bg-background border-t border-border">
+    <section id="activity" className="relative py-24 bg-background border-t border-border">
+      <span id="github" className="absolute -top-24" />
       <div className="max-w-7xl mx-auto px-6">
         
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Main Section Header */}
+        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-4">
-              <FaGithub className="w-10 h-10 text-primary" /> GitHub Activity
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-3">
+              <Code2 className="w-3.5 h-3.5" />
+              <span>Live Telemetry &amp; Heatmaps</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center gap-3">
+              Activity &amp; Contribution Heatmaps
             </h2>
-            <div className="w-20 h-1 bg-primary rounded-full mb-6" />
+            <div className="w-24 h-1.5 bg-gradient-to-r from-[#FFA116] via-cyan-400 to-purple-500 rounded-full mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Real-time insights directly from my GitHub profile. I believe in open-source 
-              and continuous daily shipping.
+              Consistent daily execution across competitive programming on LeetCode and open-source shipping on GitHub.
             </p>
           </div>
 
@@ -56,7 +123,17 @@ export default async function GithubDashboard() {
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-[#FFA116]/50 hover:bg-[#FFA116]/10 text-sm font-medium transition-all group shadow-sm"
             >
               <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
-              <span>LeetCode Profile</span>
+              <span>LeetCode (302 Solved)</span>
+              <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </a>
+            <a
+              href="https://github.com/shiv123-coder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-primary/50 hover:bg-primary/10 text-sm font-medium transition-all group shadow-sm"
+            >
+              <FaGithub className="w-4 h-4 text-primary" />
+              <span>GitHub (shiv123-coder)</span>
               <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
             </a>
             <a
@@ -66,38 +143,63 @@ export default async function GithubDashboard() {
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-[#5B4638]/50 hover:bg-[#5B4638]/10 text-sm font-medium transition-all group shadow-sm"
             >
               <SiCodechef className="w-4 h-4 text-[#5B4638] dark:text-[#D1A684]" />
-              <span>CodeChef Profile</span>
+              <span>CodeChef (Rank 2143)</span>
               <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
             </a>
           </div>
         </div>
 
-        {/* Top Stats */}
+        {/* 1. LeetCode Activity & Heatmap (Directly Above GitHub Heatmap) */}
+        <div className="mb-16">
+          <LeetcodeCalendarClient data={leetcode} />
+        </div>
+
+        {/* 2. GitHub Header & Contribution Area */}
+        <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2 flex items-center gap-3">
+              <FaGithub className="w-7 h-7 text-primary" /> GitHub Activity &amp; Contributions
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Real-time insights directly from my GitHub profile. I believe in open-source and continuous daily shipping.
+            </p>
+          </div>
+          <a
+            href="https://github.com/shiv123-coder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+          >
+            <span>View GitHub Profile</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        {/* Top GitHub Stats */}
         {user && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4">
+            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4 hover:border-primary/40 transition-colors">
               <div className="p-3 bg-secondary rounded-xl text-primary"><Users className="w-6 h-6" /></div>
               <div>
                 <p className="text-2xl font-bold text-foreground">{user.followers}</p>
                 <p className="text-sm text-muted-foreground">Followers</p>
               </div>
             </div>
-            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4">
+            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4 hover:border-primary/40 transition-colors">
               <div className="p-3 bg-secondary rounded-xl text-primary"><BookOpen className="w-6 h-6" /></div>
               <div>
                 <p className="text-2xl font-bold text-foreground">{user.public_repos}</p>
                 <p className="text-sm text-muted-foreground">Public Repos</p>
               </div>
             </div>
-            {/* Displaying static stars/PRs approximation if we don't use GQL */}
-            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4">
+            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4 hover:border-primary/40 transition-colors">
               <div className="p-3 bg-secondary rounded-xl text-primary"><Star className="w-6 h-6" /></div>
               <div>
                 <p className="text-2xl font-bold text-foreground">10+</p>
                 <p className="text-sm text-muted-foreground">Stars Earned</p>
               </div>
             </div>
-            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4">
+            <div className="p-6 rounded-2xl border border-border bg-card flex items-center gap-4 hover:border-primary/40 transition-colors">
               <div className="p-3 bg-secondary rounded-xl text-primary"><GitFork className="w-6 h-6" /></div>
               <div>
                 <p className="text-2xl font-bold text-foreground">50+</p>
@@ -107,8 +209,8 @@ export default async function GithubDashboard() {
           </div>
         )}
 
-        {/* Contribution Graph */}
-        <div className="mb-12">
+        {/* GitHub Contribution Graph */}
+        <div className="mb-14">
           <GithubCalendarClient />
         </div>
 
@@ -158,3 +260,4 @@ export default async function GithubDashboard() {
     </section>
   );
 }
+
