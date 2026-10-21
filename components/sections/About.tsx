@@ -7,11 +7,8 @@ import {
   Rocket, 
   Code2, 
   CheckCircle2, 
-  Quote, 
   Sparkles, 
-  Terminal, 
-  Cpu, 
-  Trophy 
+  Terminal 
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -276,28 +273,6 @@ export default function About() {
           </motion.div>
 
         </div>
-
-        {/* Bottom Banner: Personal Engineering Philosophy Quote */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-[#0b1323] via-[#0d182e] to-[#120f26] p-6 sm:p-8 shadow-2xl flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left"
-        >
-          <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shrink-0">
-            <Quote className="w-6 h-6 rotate-180" />
-          </div>
-
-          <div className="flex-1">
-            <p className="text-base sm:text-lg text-white font-medium italic tracking-wide mb-1">
-              &ldquo;Performance is an engineering feature. Clean architecture is a necessity. Empathy for the real user is everything.&rdquo;
-            </p>
-            <p className="text-xs font-mono uppercase tracking-widest text-cyan-400/90 font-semibold">
-              — SHIVSHANKAR MALI • PERSONAL ENGINEERING PHILOSOPHY
-            </p>
-          </div>
-        </motion.div>
 
       </div>
     </section>
