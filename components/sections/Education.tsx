@@ -84,20 +84,21 @@ const educationJourney: EducationItem[] = [
   },
   {
     degree: "Secondary School Certificate (SSC) — Class X",
-    institution: "Jogeshwari Mata Secondary School",
+    institution: "Janata Vidyalaya, Pimpri Sandas",
     university: "Maharashtra State Board (MSBSHSE)",
     period: "2020 – 2021",
-    score: "Distinction",
-    scoreLabel: "Board Result",
-    location: "Maharashtra, India",
+    score: "84.81%",
+    scoreLabel: "SSC Board Score",
+    location: "Pimpri Sandas, Pune, Maharashtra",
     status: "Completed",
     badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30",
     glowColor: "from-purple-500/15 via-transparent to-transparent",
     honors: [
-      "Graduated with High Distinction across Mathematics and Science",
-      "Demonstrated early aptitude in problem solving and computational logic"
+      "Secured 84.81% aggregate in Maharashtra State Board (MSBSHSE) SSC Examination",
+      "Awarded First Class with Distinction at Janata Vidyalaya, Pimpri Sandas",
+      "Demonstrated excellence in Mathematics & Science, establishing the analytical base for engineering"
     ],
-    description: "Comprehensive foundational education emphasizing mathematical problem solving, scientific inquiry, and language communication."
+    description: "Graduated with 84.81% First Class with Distinction from Janata Vidyalaya, Pimpri Sandas, developing strong analytical discipline and quantitative problem-solving fundamentals."
   }
 ];
 
