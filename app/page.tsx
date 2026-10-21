@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 
 // Strategically Lazy Loading below-the-fold components to maximize Lighthouse performance
 const About = dynamic(() => import("@/components/sections/About"), { ssr: true });
+const Education = dynamic(() => import("@/components/sections/Education"), { ssr: true });
 const Skills = dynamic(() => import("@/components/sections/Skills"), { ssr: true });
 const Projects = dynamic(() => import("@/components/sections/Projects"), { ssr: true });
 const Experience = dynamic(() => import("@/components/sections/Experience"), { ssr: true });
@@ -17,6 +18,7 @@ export default function Home() {
     <main className="flex-1 flex flex-col">
       <Hero />
       <About />
+      <Education />
       <Skills />
       <Projects />
       <Experience />
