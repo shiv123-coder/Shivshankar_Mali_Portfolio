@@ -135,17 +135,37 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Right Column: Circular Photo with Glowing Ring & Orbiting Badges */}
+            {/* Right Column: Circular Photo with Glowing Ring & Floating Orbiting Badges */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2 mb-6 lg:mb-0"
             >
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-                
-                {/* Glowing Gradient Border (Cyan to Purple) */}
-                <div className="absolute -inset-1.5 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-sm opacity-80 animate-pulse-subtle" />
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 5.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96"
+              >
+                {/* Glowing Gradient Border (Cyan to Purple) with Breathing Pulse */}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.04, 1],
+                    opacity: [0.75, 0.95, 0.75],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute -inset-1.5 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-sm"
+                />
                 
                 {/* Image Container */}
                 <div className="relative w-full h-full rounded-full overflow-hidden border-[4px] border-[#070b12] bg-[#0c172a] shadow-2xl">
@@ -159,8 +179,16 @@ export default function Hero() {
                 {/* Floating Orbit Badge 1: Top-Left (Academics) */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                  animate={{
+                    opacity: 1,
+                    y: [0, -7, 0],
+                    x: [0, -3, 0],
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 0.4 },
+                    y: { duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.2 },
+                    x: { duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.2 },
+                  }}
                   className="absolute -top-3 -left-3 sm:top-2 sm:-left-8 bg-[#0c172a]/95 backdrop-blur-md border border-cyan-500/30 rounded-2xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20 hover:scale-105 transition-transform"
                 >
                   <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
@@ -179,8 +207,16 @@ export default function Hero() {
                 {/* Floating Orbit Badge 2: Left (LeetCode & DSA) */}
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
+                  animate={{
+                    opacity: 1,
+                    y: [0, 7, 0],
+                    x: [0, -4, 0],
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 0.5 },
+                    y: { duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+                    x: { duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+                  }}
                   className="absolute top-1/2 -left-6 sm:top-[58%] sm:-left-12 -translate-y-1/2 bg-[#0c172a]/95 backdrop-blur-md border border-emerald-500/30 rounded-2xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20 hover:scale-105 transition-transform"
                 >
                   <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
@@ -199,8 +235,16 @@ export default function Hero() {
                 {/* Floating Orbit Badge 3: Bottom-Right (TCS CodeVita) */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
+                  animate={{
+                    opacity: 1,
+                    y: [0, -6, 0],
+                    x: [0, 4, 0],
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 0.6 },
+                    y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.0 },
+                    x: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.0 },
+                  }}
                   className="absolute -bottom-2 -right-2 sm:bottom-4 sm:-right-6 bg-[#0c172a]/95 backdrop-blur-md border border-purple-500/30 rounded-2xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20 hover:scale-105 transition-transform"
                 >
                   <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400">
@@ -216,7 +260,7 @@ export default function Hero() {
                   </div>
                 </motion.div>
 
-              </div>
+              </motion.div>
             </motion.div>
 
           </div>
