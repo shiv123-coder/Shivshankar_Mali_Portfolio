@@ -12,7 +12,6 @@ import {
   Calendar, 
   MapPin, 
   CheckCircle2, 
-  FileCheck,
   ShieldCheck,
   Terminal,
   Clock
@@ -20,7 +19,7 @@ import {
 import { SiLeetcode, SiCodechef } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
-type TabId = "experience" | "achievements" | "certifications";
+type TabId = "experience" | "achievements";
 
 const experiences = [
   {
@@ -148,51 +147,6 @@ const achievements = [
   }
 ];
 
-const credentialsList = [
-  {
-    title: "Java & DSA Internship Certification",
-    issuer: "Talent Battle Pvt. Ltd.",
-    date: "July 2025",
-    badge: "INTERNSHIP CREDENTIAL",
-    link: "https://drive.google.com/file/d/1qzONcMVjVLykMn06f6GnNJDo4S2D311v/view?usp=sharing",
-  },
-  {
-    title: "Java Development Internship Certification",
-    issuer: "Oasis Infobyte",
-    date: "2024",
-    badge: "INTERNSHIP CREDENTIAL",
-    link: "https://drive.google.com/file/d/1uV9Ec-MV_9EkuHjdvtsWhNtTsC1ZLwuj/view?usp=sharing",
-  },
-  {
-    title: "TCS CodeVita Season 13 Certificate of Merit",
-    issuer: "Tata Consultancy Services",
-    date: "Season 13",
-    badge: "GLOBAL COMPETITION",
-    link: "https://drive.google.com/file/d/1rH2a06f-mDsVEqGgX6KnBwNgQuLwVV1B/view?usp=sharing",
-  },
-  {
-    title: "TenZorX AI Hackathon Achievement",
-    issuer: "TenZorX Technologies",
-    date: "2025",
-    badge: "HACKATHON FINALIST",
-    link: "https://drive.google.com/file/d/1HUlUk8fwqefLBVxeIl4censhd-O7jdY6/view?usp=sharing",
-  },
-  {
-    title: "VYOMA 2026 Prototype Innovation Certificate",
-    issuer: "VYOMA Competition",
-    date: "2026",
-    badge: "PROTOTYPE COMPETITION",
-    link: "https://drive.google.com/file/d/1lhM2ur-aR0Zgo9dAX3g1G5qyL9Rt7902/view?usp=sharing",
-  },
-  {
-    title: "MaTPO Aptitude Idol National Certificate",
-    issuer: "MaTPO Association",
-    date: "2025",
-    badge: "NATIONAL APTITUDE",
-    link: "https://drive.google.com/file/d/1e7Ol6XY2tbdIbbPpOXzWvZqQlFrdBOVI/view?usp=sharing",
-  }
-];
-
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<TabId>("experience");
 
@@ -201,8 +155,6 @@ export default function Experience() {
       const hash = window.location.hash;
       if (hash === "#achievements") {
         setActiveTab("achievements");
-      } else if (hash === "#certifications") {
-        setActiveTab("certifications");
       } else if (hash === "#experience") {
         setActiveTab("experience");
       }
@@ -280,22 +232,6 @@ export default function Experience() {
               <span>Global Honors</span>
               <span className={cn("text-[10px] font-mono px-1.5 py-0.2 rounded-full", activeTab === "achievements" ? "bg-black/20 text-black font-bold" : "bg-white/10 text-gray-400")}>
                 {achievements.length}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab("certifications")}
-              className={cn(
-                "flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer",
-                activeTab === "certifications" 
-                  ? "bg-purple-400 text-black shadow-[0_0_20px_rgba(192,132,252,0.4)] font-bold scale-[1.02]" 
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
-              )}
-            >
-              <FileCheck className="w-4 h-4" />
-              <span>Certifications</span>
-              <span className={cn("text-[10px] font-mono px-1.5 py-0.2 rounded-full", activeTab === "certifications" ? "bg-black/20 text-black font-bold" : "bg-white/10 text-gray-400")}>
-                {credentialsList.length}
               </span>
             </button>
           </motion.div>
@@ -491,57 +427,6 @@ export default function Experience() {
                     </motion.div>
                   );
                 })}
-              </motion.div>
-            )}
-
-            {/* TAB 3: VERIFIED CERTIFICATIONS DIRECT VERIFICATION */}
-            {activeTab === "certifications" && (
-              <motion.div
-                key="certifications"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-              >
-                {credentialsList.map((cert, idx) => (
-                  <motion.div
-                    key={cert.title}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.06 }}
-                    className="group relative p-6 rounded-3xl border border-white/10 bg-[#090f1d]/90 backdrop-blur-xl hover:border-purple-400/40 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl overflow-hidden"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-purple-500/10 text-purple-400 border border-purple-500/30">
-                          {cert.badge}
-                        </span>
-                        <span className="text-[11px] font-mono text-gray-400">
-                          {cert.date}
-                        </span>
-                      </div>
-
-                      <h4 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors leading-snug mb-1">
-                        {cert.title}
-                      </h4>
-                      <p className="text-xs font-mono text-cyan-400 mb-4">
-                        Issued by: {cert.issuer}
-                      </p>
-                    </div>
-
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-2 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-purple-500/20 text-gray-300 hover:text-white border border-white/10 hover:border-purple-400/40 transition-all duration-200 group/btn"
-                    >
-                      <ShieldCheck className="w-4 h-4 text-purple-400" />
-                      <span>View Credential Document</span>
-                      <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </a>
-                  </motion.div>
-                ))}
               </motion.div>
             )}
 
