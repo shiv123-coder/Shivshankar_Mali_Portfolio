@@ -169,6 +169,28 @@ export const certificatesList: CertificateItem[] = [
     image: "/certificates/aws-solutions-architecture.png",
     verificationBadge: "CLOUD ARCHITECTURE",
     description: "Practical simulation designing highly available, fault-tolerant distributed cloud infrastructure on Amazon Web Services."
+  },
+  {
+    id: "adobe-hackathon",
+    label: "ADOBE UNIVERSITY HACKATHON",
+    title: "Adobe University Hackathon 2026",
+    issuer: "Adobe Inc.",
+    category: "competitions",
+    date: "2026",
+    image: "/certificates/adobe-hackathon-2026.png",
+    verificationBadge: "NATIONAL HACKATHON",
+    description: "Certificate of Participation awarded for demonstrating full-stack problem solving and product prototyping in the Adobe University Hackathon organized by Adobe."
+  },
+  {
+    id: "hero-campus-challenge",
+    label: "HERO CAMPUS CHALLENGE S10",
+    title: "Hero Campus Challenge Season 10",
+    issuer: "Hero MotoCorp Limited",
+    category: "competitions",
+    date: "Season 10",
+    image: "/certificates/hero-campus-challenge-s10.png",
+    verificationBadge: "CAMPUS CHALLENGE S10",
+    description: "Certificate of Participation awarded for high analytical qualification in the National Online Assessment of Hero Campus Challenge Season 10 organized by Hero MotoCorp Limited."
   }
 ];
 
