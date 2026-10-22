@@ -7,6 +7,8 @@ const Education = dynamic(() => import("@/components/sections/Education"), { ssr
 const Skills = dynamic(() => import("@/components/sections/Skills"), { ssr: true });
 const Projects = dynamic(() => import("@/components/sections/Projects"), { ssr: true });
 const Experience = dynamic(() => import("@/components/sections/Experience"), { ssr: true });
+const VisualShowcase = dynamic(() => import("@/components/sections/VisualShowcase"), { ssr: true });
+const CertificationsShowcase = dynamic(() => import("@/components/sections/CertificationsShowcase"), { ssr: true });
 const GithubDashboard = dynamic(() => import("@/components/sections/GithubDashboard"), { 
   ssr: true,
   loading: () => <div className="py-24 flex justify-center"><div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" /></div>
@@ -22,6 +24,8 @@ export default function Home() {
       <Skills />
       <Projects />
       <Experience />
+      <VisualShowcase />
+      <CertificationsShowcase />
       <GithubDashboard />
       <Contact />
     </main>
